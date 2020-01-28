@@ -1,3 +1,5 @@
 main.cpp
 media.cpp
 media.h
+photo.h
+video.h

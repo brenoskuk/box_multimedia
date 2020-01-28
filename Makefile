@@ -1,7 +1,7 @@
 ##########################################
 #
-#  Exemple de Makefile
-#  Eric Lecolinet - Reda Dehak - Telecom ParisTech 2015
+#  Makefile
+#  Breno BALDAS SKUK
 #  INF224 - TP C++ - http://www.telecom-paristech.fr/~elc/inf224
 #
 ##########################################
