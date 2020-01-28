@@ -25,13 +25,10 @@ public:
     void showName(ostream& stre) const;
 
     // Destructor
-    // VIRTUAAAAL
-    ~Media();  // This is the destructor
+    virtual ~Media();  // This is the destructor
 
     // VIRTUAL METHOD play used in inherited classes
-    // VIRTUAAAAL
-    void play() const;
-
+    virtual void play() const = 0;
 
 private:
     string path = "noname";

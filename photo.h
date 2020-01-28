@@ -12,18 +12,7 @@ class Photo : public Media {
 public:
 
     // Destructor
-    ~Photo();  // This is the destructor
-
-    // Play Method
-    /** Method play is declared as virtual in parent class. It uses system to open the imagej to show image.
-     * To this end it concatenates a string and uses the c_str() method to obtain a pointer that
-     * system can read.
-     **/
-    void play() const{
-        // Concatenates srings to obtain argument
-        system(("mpv" + this->getPath() +"&").c_str());
-    }
-
+    ~Photo() override;  // This is the destructor
 
     // Constructor
     Photo(string name, string path, double latitude, double longitude) : Media (name, path){
@@ -46,7 +35,12 @@ public:
 
     void showLatLong(ostream& stre) const;
 
-
+    // Play Method
+    /** Method play is declared as virtual in parent class. It uses system to open the imagej to show image.
+     * To this end it concatenates a string and uses the c_str() method to obtain a pointer that
+     * system can read.
+     **/
+    void play() const override;
 
 
 private:

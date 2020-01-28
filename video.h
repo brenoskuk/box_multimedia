@@ -31,18 +31,16 @@ public:
 
     void showPlaytime(ostream& stre) const;
 
+    // Destructor
+    ~Video();  // This is the destructor
+
     // Play Method
     /** Method play is declared as virtual in parent class. It uses system to open the mpv video player.
      * To this end it concatenates a string and uses the c_str() method to obtain a pointer that
      * system can read.
      **/
-    void play() const{
-        // Concatenates srings to obtain argument
-        system(("mpv" + this->getPath() +"&").c_str());
-    }
+    void play() const override;
 
-    // Destructor
-    ~Video();  // This is the destructor
 
 private:
     int playtime = 0;

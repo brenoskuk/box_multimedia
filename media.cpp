@@ -46,9 +46,8 @@ Media::~Media() {
    cout << "Media deleted)" << endl;
 }
 
-void Media::play() const{
-    //nothing
-}
+
+
 
 
 
