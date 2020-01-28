@@ -2,6 +2,8 @@ film.cpp
 film.h
 group.h
 main.cpp
+manager.cpp
+manager.h
 media.cpp
 media.h
 photo.cpp
