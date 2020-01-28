@@ -4,7 +4,7 @@
 // DESTRUCTOR
 Photo::~Photo()
 {
-   cout << "Media deleted)" << endl;
+   //cout << "Media deleted" << endl;
 }
 
 void Photo::play() const

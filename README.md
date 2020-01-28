@@ -15,6 +15,16 @@ Obs2.: video.cpp and photo.cpp were added to the Makefile
 
     ii. The getter of table returns a const int. This achives encapsulation.
 
-    iii. The pointer to the table can be accessed only by the Object. 
+    iii. The pointer to the table can be accessed only by the Object.
 
     iv. Tested and succeded.
+
+7.
+
+    i. All objects that have instantiated attributes with dynamic memory must have the delete specified to avoid loss of memory. So far only the class Film needs this treatent. The copy of an object can pose problems
+
+    ii. Copying an object can pose problems when there are attributes dynamiccaly allocated since making a shallow copy and destroying taking into account (i) will result in an object whose pointer isn't a valid memory allocation. This must be solved by making deep copies of all such classes. As previously said in (i), only the class Film needs to be addressed by redefining the copying functions (done for Film class).
+
+8. In java we could do List<Object> object = new ArrayList<Object>();
+
+9.

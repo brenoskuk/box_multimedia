@@ -4,7 +4,7 @@
 // DESTRUCTOR
 Video::~Video()
 {
-   cout << "Media deleted)" << endl;
+    // Do something
 }
 
 void Video::play() const

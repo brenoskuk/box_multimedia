@@ -1,13 +1,13 @@
 #include "film.h"
 
-void Film::setChapters(int *chapters, int n_chaps)
+void Film::setChapters(int *chapters, unsigned int n_chaps)
 {
     delete[] this->chaps_lenghts;
     int * pl = nullptr;
     if (n_chaps!=0)
     {
         pl = new int [n_chaps];
-        for (int i = 0; i < n_chaps; i++)
+        for (unsigned int i = 0; i < n_chaps; i++)
         {
             this->chaps_lenghts[i] = chapters[i];
         }
@@ -42,7 +42,7 @@ void Film::printMedia(std::ostream &str)
 void Film::showFilm()
 {
     cout << "n chapters is "<< this->n_chaps << endl;
-    for (int k=0; k < this->n_chaps; k++)
+    for (unsigned int k=0; k < this->n_chaps; k++)
     {
         cout << this->chaps_lenghts[k] << endl;
     }

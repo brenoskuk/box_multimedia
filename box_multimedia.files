@@ -1,5 +1,6 @@
 film.cpp
 film.h
+group.h
 main.cpp
 media.cpp
 media.h
