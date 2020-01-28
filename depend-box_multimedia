@@ -1,1 +1,4 @@
-main.o: main.cpp
+media.o: media.cpp media.h
+photo.o: photo.cpp photo.h media.h
+video.o: video.cpp video.h media.h
+main.o: main.cpp media.h photo.h video.h

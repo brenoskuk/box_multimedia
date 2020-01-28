@@ -5,13 +5,14 @@
 using namespace std;
 
 // Media is a virtual class
-class Media {
+class Media
+{
 
 public:
 
 
     // Constructor
-    Media(string name, string path);  // This is the constructor
+    Media(string name = "", string path = "");  // This is the constructor
     Media();
 
     // Path methods
@@ -31,8 +32,8 @@ public:
     virtual void play() const = 0;
 
 private:
-    string path = "noname";
-    string name = "noname";
+    string path = "";
+    string name = "";
 };
 
 #endif // MEDIA_H

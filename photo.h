@@ -7,7 +7,8 @@ using namespace std;
 
 #include "media.h"
 
-class Photo : public Media {
+class Photo : public Media
+{
 
 public:
 
@@ -15,20 +16,22 @@ public:
     ~Photo() override;  // This is the destructor
 
     // Constructor
-    Photo(string name, string path, double latitude, double longitude) : Media (name, path){
+    Photo(string name = "", string path = "", double latitude = 0,
+          double longitude = 0) : Media (name, path)
+    {
         this->latitude = latitude;
         this->longitude = longitude;
         cout << "Photo created" << endl;
     }
 
-    Photo() : Media (){
-        cout << "Photo created (standard)" << endl;
+    // Latitude and Longitude methods declared in Header
+    void setLatLong( double latitude, double longitude)
+    {
+        this->latitude = latitude; this->longitude = longitude;
     }
 
-    // Latitude and Longitude methods declared in Header
-    void setLatLong( double latitude, double longitude){this->latitude = latitude; this->longitude = longitude;}
-
-    void getLatLong(double & latitude, double & longitude) const {
+    void getLatLong(double & latitude, double & longitude) const
+    {
         latitude = this->latitude;
         longitude = this->longitude;
     }

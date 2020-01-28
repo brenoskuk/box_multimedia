@@ -7,32 +7,33 @@ using namespace std;
 
 #include "media.h"
 
-class Video : public Media {
+class Video : public Media
+{
 
 public:
 
+    // Destructor
+    ~Video() override;
+
     // Constructor
-    Video(string name, string path, int playtime) : Media (name, path){
+    Video(string name = "", string path = "", int playtime = 0) : Media (name, path)
+    {
         this->playtime = playtime;
         cout << "Video created" << endl;
     }
 
-    Video() : Media (){
-        cout << "Video created (standard)" << endl;
+    // playtime methods declared in Header
+    void setPlaytime( int playtime)
+    {
+        this->playtime = playtime;
     }
 
-    // playtime methods declared in Header
-    void setPlaytime( int playtime){
-        this->playtime = playtime;}
-
-    int getPlaytime() const{
+    int getPlaytime() const
+    {
         return this->playtime;
     }
 
     void showPlaytime(ostream& stre) const;
-
-    // Destructor
-    ~Video();  // This is the destructor
 
     // Play Method
     /** Method play is declared as virtual in parent class. It uses system to open the mpv video player.

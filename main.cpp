@@ -7,19 +7,21 @@
 #include "media.h"
 #include "photo.h"
 #include "video.h"
+#include "film.h"
 
 
 using namespace std;
 
-int main(int argc, const char* argv[])
+void test5()
 {
-
-    std::cout << "Midia test" << std::endl;
+    cout << "Midia test" << endl;
 
     Video * v1 = new Video("video1", "samples/video_sample_1.mp4",1);
     Video * v2 = new Video();
     Photo * p1 = new Photo("photo1", "samples/lena.tif", 14.22, 22.34);
     Photo * p2 = new Photo();
+
+    // Test of setters
 
     v2->setName("Video2");
     v2->setPath("samples/video_sample_2.flv");
@@ -28,24 +30,76 @@ int main(int argc, const char* argv[])
     p2->setLatLong(22.4444,22.592);
 
 
-    std::cout << "Media 1 name: " << v1->getName() <<std::endl;
-    std::cout << "Media 1 path: " << v1->getPath() <<std::endl;
-    std::cout << "Media 2 name: " << p1->getName() <<std::endl;
-    std::cout << "Media 2 path: " << p2->getPath() <<std::endl;
+    cout << "\nTest of loop with polymorphism:\n\n" <<endl;
 
-    double latitude, longitude;
-    p2->getLatLong(latitude,longitude);
+    // Test of loop with polymorphism
 
-    std::cout << "Media 3 latitude: " << latitude <<std::endl;
-    std::cout << "Media 3 name: " << p1->getName() <<std::endl;
-    std::cout << "Media 3 path: " << p1->getPath() <<std::endl;
+    Media ** medias = new Media * [10];
 
-    std::cout << "\n\nOPENING222 FILES\n\n" <<std::endl;
+    int count = 0;
+    medias[count ++] = v1;
+    medias[count ++] = p1;
+    medias[count ++] = v2;
+    medias[count ++] = p2;
 
-    v1->play();
-    p1->play();
 
-    std::cout << "\nEnd of OPENING\n\n" <<std::endl;
+    for (int k=0; k < count; k++)
+    {
+        cout << "/nMedia "<< k << " has name: " << medias[k]->getName() <<endl;
+        cout << "Media "<< k << " has path: " << medias[k]->getPath() << "\n" <<endl;
+        medias[k]->play();
+    }
 
+    // Deletions
+    delete[] medias;
+}
+
+void test6()
+{
+    int n = 10;
+    int * chaps = nullptr;
+    chaps = new int [n];
+
+    for (int k=0; k < n; k++)
+    {
+        chaps[k] = k;
+        //cout << chaps[k] << endl;
+    }
+
+    Film * f = new Film ("film1", "samples/film1", 180,chaps, n);
+
+    int n_chaps_new = f->getChapNumber();
+    const int * chaps_new = f->getChapters();
+
+    cout << "n chapters is "<< n_chaps_new << endl;
+
+    for (int k=0; k < n_chaps_new; k++)
+    {
+        cout << chaps_new[k] << endl;
+    }
+
+    delete[] chaps;
+    int n2 = 4;
+    int * chaps2 = nullptr;
+    chaps2 = new int [n2];
+    chaps2[0] = 2;
+    chaps2[1] = 8;
+    chaps2[2] = 16;
+    chaps2[3] = 64;
+
+    f->setChapters(chaps2,n2);
+    cout << "n chapters is "<< f->getChapNumber() << endl;
+
+    for (int k=0; k < f->getChapNumber(); k++)
+    {
+        cout << f->getChapters()[k] << endl;
+    }
+    delete f;
+}
+
+int main(int argc, const char* argv[])
+{
+    //test5();
+    test6();
     return 0;
 }

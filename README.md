@@ -7,4 +7,14 @@ The method is declared at the header of each class so there is no need to modify
 Obs.: Since the Media class is virtual, Media objects can't be instantiated.
 Obs2.: video.cpp and photo.cpp were added to the Makefile
 
+5. Polymorphism of Heritage allows generic treatment of derived classes. In C++ a pointer to the base class is able to call methods of the derived if the base class that changes in the virtual class is virtual. In Java aways calls the point method.
 
+
+6.
+    i. The object film mantains an internal copy of the table, meaning that it's copied from an external table. Once this is done, only the Object could modify it.
+
+    ii. The getter of table returns a const int. This achives encapsulation.
+
+    iii. The pointer to the table can be accessed only by the Object. 
+
+    iv. Tested and succeded.
