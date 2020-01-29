@@ -27,4 +27,6 @@ Obs2.: video.cpp and photo.cpp were added to the Makefile
 
 8. In java we could do List<Object> object = new ArrayList<Object>();
 
-9.
+10. To allow only the Manager to create new Media, the constructor of these classes should be made private and the Manager class could be made a frendly class of Media and all it's descendets. This was not implemented since all previous tests in main() would have to be changed.
+
+11.

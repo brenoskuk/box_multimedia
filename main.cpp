@@ -9,6 +9,7 @@
 #include "video.h"
 #include "film.h"
 #include "group.h"
+#include "manager.h"
 
 using namespace std;
 
@@ -169,10 +170,46 @@ void test9()
 
 }
 
+void test10()
+{
+
+    // testing manager
+
+    Manager * m = new Manager ();
+
+    // testing media
+
+    m->newVideo("video1", "samples/video_sample_1.mp4",1);
+    m->newPhoto("photo1", "samples/lena.tif", 14.22, 22.34);
+    m->newVideo("video2", "samples/video_sample_2.flv", 2);
+    m->newPhoto("photo2", "samples/lacornou.tif", 55.5, 22.13);
+    m->playMedia("video1");
+
+    m->playMedia("photo2");
+    // deleting media
+    m->deleteMedia("video1");
+    cout << "deletando" << endl;
+    m->playMedia("video1");
+    cout << "deletado" << endl;
+    // testing groups
+
+    m->newGroup("group1");
+    m->newGroup("group2");
+    m->addFileToGroup("video1","group1");
+    m->addFileToGroup("group1","video2");
+    m->addFileToGroup("photo1","group1");
+
+    m->playMedia("photo1");
+    m->deleteGroup("group1");
+    m->playMedia("photo1");
+
+}
+
 int main(int argc, const char* argv[])
 {
     //test5();
     //test6();
-    test9();
+    //test9();
+    test10();
     return 0;
 }

@@ -21,91 +21,100 @@ typedef shared_ptr<Film> FilmPtr;
 typedef shared_ptr<Group> GroupPtr;
 
 // defines shortcuts to shared_ptr
-typedef map<string, MediaPtr> MediaMap;
-typedef map<string, GroupPtr> GroupMap;
+typedef map<string, MediaPtr> MediaDict;
+typedef map<string, GroupPtr> GroupDict;
 
 // smart pointers to map
-typedef shared_ptr<MediaMap> MediaMapPtr;
-typedef shared_ptr<GroupMap> GroupMapPtr;
+typedef shared_ptr<MediaDict> MediaDictPtr;
+typedef shared_ptr<GroupDict> GroupDictPtr;
 
 class Manager
 {
 
 public:
 
-    Manager(MediaMap mediaMap, GroupMap groupMap);
+    // Manager constructor only initializes dicts as attributes
+    Manager() : mediaDict(), groupDict(){}
 
     /**
       Each media type has a dedicated method for adding a new entry to the map.
       They individually call the constructor of each class.
-      First they create a new object. Then they search if the map already has
-      an object by the same name. If it does, deletes it using smart pointer
-      operator reset. Then maps the object to it's name.
-      Finally, returns a smart pointer to the object type.
+      First they search if the map already has
+      an object by the same name. If it does, prints a warning and does nothing.
+      If it doesn't creates a new object, adds it to the Dict and returns
+      a smart pointer to the object.
     **/
-    MediaPtr newPhoto(string name, string path, int latitude, int longitude)
+    MediaPtr newPhoto(string name, string path, double latitude, double longitude);
+
+    MediaPtr newVideo(string name, string path, int playtime);
+
+    MediaPtr newFilm(string name, string path, int playtime, int * chaps_lenghts, unsigned int n_chaps);
+
+    GroupPtr newGroup(string name);
+
+    /** Finding a group or a media is a simple search in the Dict
+    **/
+    MediaPtr findMedia(string name)
     {
-        PhotoPtr pointer(new Photo(name, path, latitude, longitude));
-        mediaMap[name] = pointer;
-        if (pointer.use_count() != 0)
+        auto it = mediaDict.find(name);
+        if (it != mediaDict.end())
         {
-            pointer.reset();
+            cout << "check find media " << it->second->getName() << endl;
+            return it->second;
         }
-        return mediaMap[name];
+        else
+        {
+            // streams error
+            return nullptr;
+        }
     }
-    MediaPtr newVideo(string name, string path, int playtime)
+
+    GroupPtr findGroup(string name)
     {
-        VideoPtr pointer(new Video(name, path, playtime));
-        mediaMap[name] = pointer;
-        if (pointer.use_count() != 0)
+        auto it = groupDict.find(name);
+        if (it != groupDict.end())
         {
-            pointer.reset();
+            return it->second;
         }
-        return mediaMap[name];
-    }
-    MediaPtr newFilm(string name, string path, int playtime, int * chaps_lenghts, unsigned int n_chaps)
-    {
-        FilmPtr pointer(new Film(name, path ,playtime, chaps_lenghts, n_chaps));
-        mediaMap[name] = pointer;
-        if (pointer.use_count() != 0)
+        else
         {
-            pointer.reset();
+            // streams error
+            return nullptr;
         }
-        return mediaMap[name];
-    }
-    GroupPtr newGroup(string name)
-    {
-        GroupPtr pointer(new Group(name));
-        groupMap[name] = pointer;
-        if (pointer.use_count() != 0)
-        {
-            pointer.reset();
-        }
-        return groupMap[name];
     }
 
     /**
-      Media and Groups are deleted by reseting the pointer in the corresponding map.
+      Media are deleted by reseting the pointer in the corresponding dict.
       Smart pointers will make sure to call the right destructors.
+      If a media is deleted, groups that contain it are taken into account.
     **/
-    void deleteMedia(string name)
-    {
-        auto it = mediaMap.find(name);
-           if (it != mediaMap.end())
-           {
-               for (auto i = groupMap.begin(); i != groupMap.end(); i++)
-                   i->second->remove(it->second);
-               mediaMap.erase(it);
-           }
-    }
+    void deleteMedia(string name);
+
+    /**
+      Groups are deleted by erasing the pointer in the corresponding map.
+      To avoid deletion of associated media, all entries of the group are removed
+      before the erasure.
+    **/
     void deleteGroup(string name);
 
     void addFileToGroup(string fileName, string groupName);
-    void playMedia(string name);
+
+    void playMedia(string name)
+    {
+        MediaPtr pointer = this->findMedia(name);
+        if (pointer != nullptr)
+        {
+            pointer->play();
+        }
+        else
+        {
+            // do something
+        }
+    }
 
 private:
-    MediaMap mediaMap;
-    GroupMap groupMap;
+    MediaDict mediaDict;
+    GroupDict groupDict;
 };
 
 #endif // MANAGER_H
