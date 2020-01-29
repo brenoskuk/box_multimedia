@@ -3,10 +3,8 @@
 void Film::setChapters(int *chapters, unsigned int n_chaps)
 {
     delete[] this->chaps_lenghts;
-    int * pl = nullptr;
     if (n_chaps!=0)
     {
-        pl = new int [n_chaps];
         for (unsigned int i = 0; i < n_chaps; i++)
         {
             this->chaps_lenghts[i] = chapters[i];
@@ -15,29 +13,6 @@ void Film::setChapters(int *chapters, unsigned int n_chaps)
     this->n_chaps = n_chaps;
 }
 
-
-/**
-void Film::printMedia(std::ostream &str)
-{
-    str << "This file is a FILM \n"
-        << "Path : " << this->getPath() << '\n'
-        << "Media name : " << this->getName() << '\n'
-        << "Duration : " << this->playtime << '\n'
-        << "Number of chapters : " << this->n_chap << '\n';
-    if (chapNb != 0)
-    {
-        str << "Chapters length :\n";
-        for (int i = 0; i < chapNb; i++)
-        {
-        str << "Chapter " << i + 1 << " : " << chapters[i] << '\n';
-        }
-    }
-    else
-    {
-        str << "No chapters specified \n";
-    }
-}
-**/
 
 void Film::showFilm()
 {
@@ -52,5 +27,26 @@ void Film::showFilm()
 Film::~Film()
 {
     delete[] this->chaps_lenghts;
+}
+
+void Film::showMedia(ostream& str) const
+{
+    str << "Media type : Film \n"
+        << "Media name : " << this->getName() << "\n"
+        << "Media path : " << this->getPath() << "\n"
+        << "Playtime   : " << this->getPlaytime() << "\n";
+    if (this->n_chaps != 0)
+    {
+        str << "Chapters   : " << this->n_chaps << "\n"
+            << "Lenght of chapters:" << "\n";
+        for (unsigned int k = 0; k < this->n_chaps; k++)
+        {
+        str << "Chapter " << k + 1 << " has lenght : " << this->chaps_lenghts[k] << "\n";
+        }
+    }
+    else
+    {
+        str << "There are no chapters\n";
+    }
 }
 

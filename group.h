@@ -4,6 +4,7 @@
 #include <list>
 #include <memory>
 #include <string>
+#include <iostream>
 using namespace std;
 
 #include "media.h"
@@ -29,6 +30,19 @@ public:
 
     // Delete of Group
     ~Group(){}
+
+    // Showing group
+    void showGroup(ostream& str)
+    {
+        str << "Group name : " << name << "\n";
+        for (std::shared_ptr<Media> media : *this)
+        {
+            int k = 1;
+            str << "Group number" << k << "name : " << name << "\n";
+            k++;
+            media->showMedia(str);
+        }
+    }
 
 private:
     string name;

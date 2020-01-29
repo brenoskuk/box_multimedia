@@ -15,3 +15,11 @@ void Video::play() const
     //cout << command << endl;
     system(command.c_str());
 }
+
+void Video::showMedia(ostream& str) const
+{
+    str << "Media type : Video \n"
+        << "Media name : " << this->getName() << "\n"
+        << "Media path : " << this->getPath() << "\n"
+        << "Playtime   : " << this->getPlaytime() << "\n";
+}

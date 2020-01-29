@@ -15,3 +15,12 @@ void Photo::play() const
     //cout << command << endl;
     system(command.c_str());
 }
+
+void Photo::showMedia(ostream& str) const
+{
+    str << "This file is a PHOTO \n"
+        << "Media name : " << this->getName() << "\n"
+        << "Media path : " << this->getPath() << "\n"
+        << "Latitude   : " << this->latitude << "\n"
+        << "Longitude  : " << this->longitude <<"\n";
+}

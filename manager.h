@@ -4,6 +4,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <sstream>
 
 #include "media.h"
 #include "photo.h"
@@ -11,7 +12,10 @@
 #include "film.h"
 #include "group.h"
 
+#include "tcpserver.h"
+
 using namespace std;
+using namespace cppu;
 
 // defines shortcuts to shared_ptr
 typedef shared_ptr<Media> MediaPtr;
@@ -111,6 +115,49 @@ public:
             // do something
         }
     }
+
+    /**
+      ShowManagerGroup() uses the show() method of group for all elements
+      of corresponding group.
+    **/
+    bool showManagerGroup(string name, ostream& str)
+    {
+        GroupPtr pointer = this->findGroup(name);
+        if (pointer != nullptr)
+        {
+            pointer->showGroup(str);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+      ShowManagerMedia() uses the show() method of midia and ostream str
+      to print from a pointer to a media
+    **/
+    bool showManagerMedia(string name, ostream& str)
+    {
+        MediaPtr pointer = this->findMedia(name);
+        if (pointer != nullptr)
+        {
+            pointer->showMedia(str);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * processRequest()
+     **/
+    bool processRequest(TCPConnection& cnx, const string& request, string& response);
+
+
 
 private:
     MediaDict mediaDict;

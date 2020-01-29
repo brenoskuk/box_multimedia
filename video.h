@@ -42,6 +42,8 @@ public:
      **/
     void play() const override;
 
+    // Show Method
+    void showMedia(ostream& stream) const override;
 
 private:
     int playtime = 0;

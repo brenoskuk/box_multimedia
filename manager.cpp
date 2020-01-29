@@ -109,3 +109,46 @@ void Manager::addFileToGroup(string mediaName, string groupName)
 
 }
 
+
+bool Manager::processRequest(TCPConnection &cnx, const string &request, string &response)
+{
+    cerr << "\nRequest: '" << request << "'" << endl;
+
+    // Request parsing
+    string action, name;
+    stringstream str;
+    str << request;
+    str >> action;
+    str >> name;
+
+    // Locking ressources
+    TCPLock lock(cnx);
+
+    // Treating request
+    stringstream answer_str;
+    bool searched, played;
+    searched = false;
+    played = false;
+    if (action == "search")
+    {
+       searched = this->showManagerMedia(name, answer_str);
+       if (!searched)
+       {
+           searched = this->showManagerGroup(name, answer_str);
+       }
+    }
+    if (action == "play")
+    {
+       playMedia(name);
+    }
+
+    // Sending response
+    if(played || searched)
+      response = answer_str.str();
+    else
+      response = "Error : no such file";
+    cerr << "response: " << response << endl;
+
+    return true;
+}
+

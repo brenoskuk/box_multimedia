@@ -28,11 +28,6 @@ string Media::getName() const
     return this->name;
 }
 
-void Media::showName(ostream& stre) const
-{
-    // may change in the future
-}
-
 // Path methods
 void Media::setPath( string new_path )
 {
@@ -42,11 +37,6 @@ void Media::setPath( string new_path )
 string  Media::getPath() const
 {
     return this->path;
-}
-
-void  Media::showPath(ostream& stre) const
-{
-    // may change in the future
 }
 
 // DESTRUCTOR

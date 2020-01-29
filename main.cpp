@@ -3,7 +3,13 @@
 // Created on 21/10/2018
 //
 
+
+#include <memory>
+#include <string>
+#include <sstream>
+#include "tcpserver.h"
 #include <iostream>
+
 #include "media.h"
 #include "photo.h"
 #include "video.h"
@@ -12,6 +18,9 @@
 #include "manager.h"
 
 using namespace std;
+using namespace cppu;
+
+const int PORT = 3331;
 
 void test5()
 {
@@ -175,8 +184,7 @@ void test10()
 
     // testing manager
 
-    Manager * m = new Manager ();
-
+    shared_ptr<Manager> m(new Manager());
     // testing media
 
     m->newVideo("video1", "samples/video_sample_1.mp4",1);
@@ -205,11 +213,34 @@ void test10()
 
 }
 
-int main(int argc, const char* argv[])
-{
+// TESTS
+//int main(int argc, const char* argv[])
+//{
     //test5();
     //test6();
     //test9();
-    test10();
+//}
+
+int main(int argc, char* argv[])
+{
+    // cree le TCPServer
+    shared_ptr<TCPServer> server(new TCPServer());
+
+    // cree l'objet qui gère les données
+    shared_ptr<Manager> base(new Manager());
+
+    // le serveur appelera cette méthode chaque fois qu'il y a une requête
+    server->setCallback(*base, &Manager::processRequest);
+
+    // lance la boucle infinie du serveur
+    cout << "Starting Server on port " << PORT << endl;
+    int status = server->run(PORT);
+
+    // en cas d'erreur
+    if (status < 0) {
+    cerr << "Could not start Server on port " << PORT << endl;
+    return 1;
+    }
+
     return 0;
 }

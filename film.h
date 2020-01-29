@@ -57,7 +57,9 @@ public:
     Film& operator=(const Film& from);
 
     // Destructor must take into account each chapter
-    ~Film();
+    ~Film() override;
+
+    void showMedia(ostream& stream) const override;
 
 private :
     int * chaps_lenghts = nullptr;
