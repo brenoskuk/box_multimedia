@@ -1,0 +1,63 @@
+\hypertarget{class_film}{}\doxysection{Film Class Reference}
+\label{class_film}\index{Film@{Film}}
+Inheritance diagram for Film\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_film}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_film_a8044b3c5d31e118c88536435419d4783}\label{class_film_a8044b3c5d31e118c88536435419d4783}} 
+{\bfseries Film} (string name=\char`\"{}\char`\"{}, string path=\char`\"{}\char`\"{}, int playtime=0, int $\ast$chaps\+\_\+lenghts=nullptr, unsigned int n\+\_\+chaps=0)
+\item 
+const int $\ast$ \mbox{\hyperlink{class_film_af5fba6c99c34e167267c128809c28980}{get\+Chapters}} ()
+\item 
+void \mbox{\hyperlink{class_film_a7725e0d89998511d5fdfe77cf3f0971e}{set\+Chapters}} (int $\ast$chapter, unsigned int n\+\_\+chap)
+\item 
+\mbox{\Hypertarget{class_film_a2c04ffba3633494a149e9f2717374d68}\label{class_film_a2c04ffba3633494a149e9f2717374d68}} 
+unsigned int {\bfseries get\+Chap\+Number} ()
+\item 
+\mbox{\Hypertarget{class_film_acbc696d4a0140d46c205d90fa5d16c08}\label{class_film_acbc696d4a0140d46c205d90fa5d16c08}} 
+void {\bfseries show\+Film} ()
+\item 
+\mbox{\Hypertarget{class_film_a68f781851622ec80878c9a6e7ccb925e}\label{class_film_a68f781851622ec80878c9a6e7ccb925e}} 
+{\bfseries Film} (const \mbox{\hyperlink{class_film}{Film}} \&from)
+\item 
+\mbox{\Hypertarget{class_film_a454566fa2d9fdd8099b0bade77f77a4a}\label{class_film_a454566fa2d9fdd8099b0bade77f77a4a}} 
+\mbox{\hyperlink{class_film}{Film}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_film}{Film}} \&from)
+\item 
+void \mbox{\hyperlink{class_film_a747fcacfd964f75ad2e30d2293638025}{show\+Media}} (ostream \&stream) const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_film_af5fba6c99c34e167267c128809c28980}\label{class_film_af5fba6c99c34e167267c128809c28980}} 
+\index{Film@{Film}!getChapters@{getChapters}}
+\index{getChapters@{getChapters}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{getChapters()}{getChapters()}}
+{\footnotesize\ttfamily const int$\ast$ Film\+::get\+Chapters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The method get\+Chapters returns a constant vector. This way only objects of type \mbox{\hyperlink{class_film}{Film}} can modify it. \mbox{\Hypertarget{class_film_a7725e0d89998511d5fdfe77cf3f0971e}\label{class_film_a7725e0d89998511d5fdfe77cf3f0971e}} 
+\index{Film@{Film}!setChapters@{setChapters}}
+\index{setChapters@{setChapters}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{setChapters()}{setChapters()}}
+{\footnotesize\ttfamily void Film\+::set\+Chapters (\begin{DoxyParamCaption}\item[{int $\ast$}]{chapter,  }\item[{unsigned int}]{n\+\_\+chap }\end{DoxyParamCaption})}
+
+The method set\+Chapters first deletes existing chapters and then adds them one by one to a new vector. \mbox{\Hypertarget{class_film_a747fcacfd964f75ad2e30d2293638025}\label{class_film_a747fcacfd964f75ad2e30d2293638025}} 
+\index{Film@{Film}!showMedia@{showMedia}}
+\index{showMedia@{showMedia}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{showMedia()}{showMedia()}}
+{\footnotesize\ttfamily void Film\+::show\+Media (\begin{DoxyParamCaption}\item[{ostream \&}]{stream }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Show method prints media type, name, path and all aditional information of media in stream format 
+
+Implements \mbox{\hyperlink{class_media_a928b8876460de84409d2500aa6b580dd}{Media}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+film.\+h\item 
+film.\+cpp\end{DoxyCompactItemize}

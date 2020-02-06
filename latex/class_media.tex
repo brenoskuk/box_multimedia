@@ -1,0 +1,53 @@
+\hypertarget{class_media}{}\doxysection{Media Class Reference}
+\label{class_media}\index{Media@{Media}}
+Inheritance diagram for Media\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_media}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_media_a393680dc44d1743d768adb77ed230e22}\label{class_media_a393680dc44d1743d768adb77ed230e22}} 
+{\bfseries Media} (string name=\char`\"{}\char`\"{}, string path=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{class_media_a99835abd72c4888f3b9a395c535c68e3}\label{class_media_a99835abd72c4888f3b9a395c535c68e3}} 
+void {\bfseries set\+Path} (string new\+\_\+path)
+\item 
+\mbox{\Hypertarget{class_media_ae5b3c4745cc02c91be70f4e3701997ac}\label{class_media_ae5b3c4745cc02c91be70f4e3701997ac}} 
+string {\bfseries get\+Path} () const
+\item 
+\mbox{\Hypertarget{class_media_ab83a89988f41fd41b1e4fddde055e958}\label{class_media_ab83a89988f41fd41b1e4fddde055e958}} 
+void {\bfseries show\+Path} (ostream \&stre) const
+\item 
+\mbox{\Hypertarget{class_media_a56d5ae82d5dacf10964ef251d05bffd9}\label{class_media_a56d5ae82d5dacf10964ef251d05bffd9}} 
+void {\bfseries set\+Name} (string new\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_media_ad6730e35e8d03ba3d9a18abf102e7bd1}\label{class_media_ad6730e35e8d03ba3d9a18abf102e7bd1}} 
+string {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{class_media_aabbaa8413a9eeaccc649f9c3068ddbc6}\label{class_media_aabbaa8413a9eeaccc649f9c3068ddbc6}} 
+virtual void {\bfseries play} () const =0
+\item 
+virtual void \mbox{\hyperlink{class_media_a928b8876460de84409d2500aa6b580dd}{show\+Media}} (ostream \&stream) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_media_a928b8876460de84409d2500aa6b580dd}\label{class_media_a928b8876460de84409d2500aa6b580dd}} 
+\index{Media@{Media}!showMedia@{showMedia}}
+\index{showMedia@{showMedia}!Media@{Media}}
+\doxysubsubsection{\texorpdfstring{showMedia()}{showMedia()}}
+{\footnotesize\ttfamily virtual void Media\+::show\+Media (\begin{DoxyParamCaption}\item[{ostream \&}]{stream }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Show method prints media type, name, path and all aditional information of media in stream format 
+
+Implemented in \mbox{\hyperlink{class_film_a747fcacfd964f75ad2e30d2293638025}{Film}}, \mbox{\hyperlink{class_photo_a3a3afd8c3f6ed158d73f3c674762c05b}{Photo}}, and \mbox{\hyperlink{class_video_a5486b3eaf40dfa3df990a1a05279ae01}{Video}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+media.\+h\item 
+media.\+cpp\end{DoxyCompactItemize}

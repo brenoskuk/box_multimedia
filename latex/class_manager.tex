@@ -1,0 +1,88 @@
+\hypertarget{class_manager}{}\doxysection{Manager Class Reference}
+\label{class_manager}\index{Manager@{Manager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Media\+Ptr \mbox{\hyperlink{class_manager_a300daf86d3e7afccc6917f4b5f069196}{new\+Photo}} (string name, string path, double latitude, double longitude)
+\item 
+\mbox{\Hypertarget{class_manager_a2c621b42f42fd2a220ce84e858f7bd55}\label{class_manager_a2c621b42f42fd2a220ce84e858f7bd55}} 
+Media\+Ptr {\bfseries new\+Video} (string name, string path, int playtime)
+\item 
+\mbox{\Hypertarget{class_manager_a2d1e702e567da2360828b1eed3926726}\label{class_manager_a2d1e702e567da2360828b1eed3926726}} 
+Media\+Ptr {\bfseries new\+Film} (string name, string path, int playtime, int $\ast$chaps\+\_\+lenghts, unsigned int n\+\_\+chaps)
+\item 
+\mbox{\Hypertarget{class_manager_a16687e956b9af79143acffddb4b1f67f}\label{class_manager_a16687e956b9af79143acffddb4b1f67f}} 
+Group\+Ptr {\bfseries new\+Group} (string name)
+\item 
+Media\+Ptr \mbox{\hyperlink{class_manager_a88f6030e5af59b42c25cdffbf8399bec}{find\+Media}} (string name)
+\item 
+\mbox{\Hypertarget{class_manager_a85b0de03d5d9405d4bdf735fd6d4d136}\label{class_manager_a85b0de03d5d9405d4bdf735fd6d4d136}} 
+Group\+Ptr {\bfseries find\+Group} (string name)
+\item 
+void \mbox{\hyperlink{class_manager_ae5c4dcdf3312fd951d21211b0d0da98b}{delete\+Media}} (string name)
+\item 
+void \mbox{\hyperlink{class_manager_a125d2bcd98c60812ca8740503ec3b6aa}{delete\+Group}} (string name)
+\item 
+\mbox{\Hypertarget{class_manager_ace83ec3f550be79ffbcaef89adec848f}\label{class_manager_ace83ec3f550be79ffbcaef89adec848f}} 
+void {\bfseries add\+File\+To\+Group} (string file\+Name, string group\+Name)
+\item 
+\mbox{\Hypertarget{class_manager_ab605b4249fea9d58c68b82cf83b8e3f0}\label{class_manager_ab605b4249fea9d58c68b82cf83b8e3f0}} 
+void {\bfseries play\+Media} (string name)
+\item 
+bool \mbox{\hyperlink{class_manager_a74c2fcae459fdb3a2debfe538bf89272}{show\+Manager\+Group}} (string name, ostream \&str)
+\item 
+bool \mbox{\hyperlink{class_manager_a9ae385105abf3c170768685bbea58416}{show\+Manager\+Media}} (string name, ostream \&str)
+\item 
+bool \mbox{\hyperlink{class_manager_a5e4ef05d62bf5df95bff5490d8f77d95}{process\+Request}} (\mbox{\hyperlink{classcppu_1_1_t_c_p_connection}{T\+C\+P\+Connection}} \&cnx, const string \&request, string \&response)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_manager_a125d2bcd98c60812ca8740503ec3b6aa}\label{class_manager_a125d2bcd98c60812ca8740503ec3b6aa}} 
+\index{Manager@{Manager}!deleteGroup@{deleteGroup}}
+\index{deleteGroup@{deleteGroup}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{deleteGroup()}{deleteGroup()}}
+{\footnotesize\ttfamily void Manager\+::delete\+Group (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+Groups are deleted by erasing the pointer in the corresponding map. To avoid deletion of associated media, all entries of the group are removed before the erasure. \mbox{\Hypertarget{class_manager_ae5c4dcdf3312fd951d21211b0d0da98b}\label{class_manager_ae5c4dcdf3312fd951d21211b0d0da98b}} 
+\index{Manager@{Manager}!deleteMedia@{deleteMedia}}
+\index{deleteMedia@{deleteMedia}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{deleteMedia()}{deleteMedia()}}
+{\footnotesize\ttfamily void Manager\+::delete\+Media (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_media}{Media}} are deleted by reseting the pointer in the corresponding dict. Smart pointers will make sure to call the right destructors. If a media is deleted, groups that contain it are taken into account. \mbox{\Hypertarget{class_manager_a88f6030e5af59b42c25cdffbf8399bec}\label{class_manager_a88f6030e5af59b42c25cdffbf8399bec}} 
+\index{Manager@{Manager}!findMedia@{findMedia}}
+\index{findMedia@{findMedia}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findMedia()}{findMedia()}}
+{\footnotesize\ttfamily Media\+Ptr Manager\+::find\+Media (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Finding a group or a media is a simple search in the Dict \mbox{\Hypertarget{class_manager_a300daf86d3e7afccc6917f4b5f069196}\label{class_manager_a300daf86d3e7afccc6917f4b5f069196}} 
+\index{Manager@{Manager}!newPhoto@{newPhoto}}
+\index{newPhoto@{newPhoto}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{newPhoto()}{newPhoto()}}
+{\footnotesize\ttfamily Media\+Ptr Manager\+::new\+Photo (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{path,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+Each media type has a dedicated method for adding a new entry to the map. They individually call the constructor of each class. First they search if the map already has an object by the same name. If it does, prints a warning and does nothing. If it doesn\textquotesingle{}t creates a new object, adds it to the Dict and returns a smart pointer to the object. \mbox{\Hypertarget{class_manager_a5e4ef05d62bf5df95bff5490d8f77d95}\label{class_manager_a5e4ef05d62bf5df95bff5490d8f77d95}} 
+\index{Manager@{Manager}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily bool Manager\+::process\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcppu_1_1_t_c_p_connection}{T\+C\+P\+Connection}} \&}]{cnx,  }\item[{const string \&}]{request,  }\item[{string \&}]{response }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_manager_a5e4ef05d62bf5df95bff5490d8f77d95}{process\+Request()}} \mbox{\Hypertarget{class_manager_a74c2fcae459fdb3a2debfe538bf89272}\label{class_manager_a74c2fcae459fdb3a2debfe538bf89272}} 
+\index{Manager@{Manager}!showManagerGroup@{showManagerGroup}}
+\index{showManagerGroup@{showManagerGroup}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{showManagerGroup()}{showManagerGroup()}}
+{\footnotesize\ttfamily bool Manager\+::show\+Manager\+Group (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{ostream \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Show\+Manager\+Group() uses the show() method of group for all elements of corresponding group. \mbox{\Hypertarget{class_manager_a9ae385105abf3c170768685bbea58416}\label{class_manager_a9ae385105abf3c170768685bbea58416}} 
+\index{Manager@{Manager}!showManagerMedia@{showManagerMedia}}
+\index{showManagerMedia@{showManagerMedia}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{showManagerMedia()}{showManagerMedia()}}
+{\footnotesize\ttfamily bool Manager\+::show\+Manager\+Media (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{ostream \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Show\+Manager\+Media() uses the show() method of midia and ostream str to print from a pointer to a media 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+manager.\+h\item 
+manager.\+cpp\end{DoxyCompactItemize}

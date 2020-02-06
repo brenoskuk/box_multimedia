@@ -1,0 +1,56 @@
+\hypertarget{class_video}{}\doxysection{Video Class Reference}
+\label{class_video}\index{Video@{Video}}
+Inheritance diagram for Video\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_video}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_video_a6d64f6689089bcd597440c91f7b260d8}\label{class_video_a6d64f6689089bcd597440c91f7b260d8}} 
+{\bfseries Video} (string name=\char`\"{}\char`\"{}, string path=\char`\"{}\char`\"{}, int playtime=0)
+\item 
+\mbox{\Hypertarget{class_video_a8e4fabd077094db7dcb016a1e5d2737b}\label{class_video_a8e4fabd077094db7dcb016a1e5d2737b}} 
+void {\bfseries set\+Playtime} (int playtime)
+\item 
+\mbox{\Hypertarget{class_video_ab47b0f43ed2a999a1cbd49c5e75b3754}\label{class_video_ab47b0f43ed2a999a1cbd49c5e75b3754}} 
+int {\bfseries get\+Playtime} () const
+\item 
+\mbox{\Hypertarget{class_video_a7859517c1633155bf32a0b8aed653dce}\label{class_video_a7859517c1633155bf32a0b8aed653dce}} 
+void {\bfseries show\+Playtime} (ostream \&stre) const
+\item 
+void \mbox{\hyperlink{class_video_a89e11497f4f200f387805b10bd42922d}{play}} () const override
+\item 
+void \mbox{\hyperlink{class_video_a5486b3eaf40dfa3df990a1a05279ae01}{show\+Media}} (ostream \&stream) const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_video_a89e11497f4f200f387805b10bd42922d}\label{class_video_a89e11497f4f200f387805b10bd42922d}} 
+\index{Video@{Video}!play@{play}}
+\index{play@{play}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Video\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Method play is declared as virtual in parent class. It uses system to open the mpv video player. To this end it concatenates a string and uses the c\+\_\+str() method to obtain a pointer that system can read. 
+
+Implements \mbox{\hyperlink{class_media}{Media}}.
+
+\mbox{\Hypertarget{class_video_a5486b3eaf40dfa3df990a1a05279ae01}\label{class_video_a5486b3eaf40dfa3df990a1a05279ae01}} 
+\index{Video@{Video}!showMedia@{showMedia}}
+\index{showMedia@{showMedia}!Video@{Video}}
+\doxysubsubsection{\texorpdfstring{showMedia()}{showMedia()}}
+{\footnotesize\ttfamily void Video\+::show\+Media (\begin{DoxyParamCaption}\item[{ostream \&}]{stream }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Show method prints media type, name, path and all aditional information of media in stream format 
+
+Implements \mbox{\hyperlink{class_media_a928b8876460de84409d2500aa6b580dd}{Media}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+video.\+h\item 
+video.\+cpp\end{DoxyCompactItemize}

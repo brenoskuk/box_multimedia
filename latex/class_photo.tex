@@ -1,0 +1,56 @@
+\hypertarget{class_photo}{}\doxysection{Photo Class Reference}
+\label{class_photo}\index{Photo@{Photo}}
+Inheritance diagram for Photo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_photo}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_photo_a9cf6c86b86c0c0fd65b54bfed1379319}\label{class_photo_a9cf6c86b86c0c0fd65b54bfed1379319}} 
+{\bfseries Photo} (string name=\char`\"{}\char`\"{}, string path=\char`\"{}\char`\"{}, double latitude=0, double longitude=0)
+\item 
+\mbox{\Hypertarget{class_photo_adb8e5e3f336f9a0a4a9ba376f7e29157}\label{class_photo_adb8e5e3f336f9a0a4a9ba376f7e29157}} 
+void {\bfseries set\+Lat\+Long} (double latitude, double longitude)
+\item 
+\mbox{\Hypertarget{class_photo_a0820cd06d36e43866c80a8d95d1111ae}\label{class_photo_a0820cd06d36e43866c80a8d95d1111ae}} 
+void {\bfseries get\+Lat\+Long} (double \&latitude, double \&longitude) const
+\item 
+\mbox{\Hypertarget{class_photo_a9507d0dc40bc507e1d67ef244a79a822}\label{class_photo_a9507d0dc40bc507e1d67ef244a79a822}} 
+void {\bfseries show\+Lat\+Long} (ostream \&stre) const
+\item 
+void \mbox{\hyperlink{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46}{play}} () const override
+\item 
+void \mbox{\hyperlink{class_photo_a3a3afd8c3f6ed158d73f3c674762c05b}{show\+Media}} (ostream \&stream) const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46}\label{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46}} 
+\index{Photo@{Photo}!play@{play}}
+\index{play@{play}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Photo\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Method play is declared as virtual in parent class. It uses system to open the imagej to show image. To this end it concatenates a string and uses the c\+\_\+str() method to obtain a pointer that system can read. 
+
+Implements \mbox{\hyperlink{class_media}{Media}}.
+
+\mbox{\Hypertarget{class_photo_a3a3afd8c3f6ed158d73f3c674762c05b}\label{class_photo_a3a3afd8c3f6ed158d73f3c674762c05b}} 
+\index{Photo@{Photo}!showMedia@{showMedia}}
+\index{showMedia@{showMedia}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{showMedia()}{showMedia()}}
+{\footnotesize\ttfamily void Photo\+::show\+Media (\begin{DoxyParamCaption}\item[{ostream \&}]{stream }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Show method prints media type, name, path and all aditional information of media in stream format 
+
+Implements \mbox{\hyperlink{class_media_a928b8876460de84409d2500aa6b580dd}{Media}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+photo.\+h\item 
+photo.\+cpp\end{DoxyCompactItemize}
